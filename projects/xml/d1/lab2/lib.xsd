@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:simpleType name="weekType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="Sunday"/>
+        <xs:enumeration value="Monday"/>
+        <xs:enumeration value="Thursday"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:element name="weekday" type="weekType"/>

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1668527111 source:m:\c\lec 1 - linked list\main.c
+	<stdio.h>
+	<stdlib.h>
+	"linked_list.h"
+
+1668527215 m:\c\lec 1 - linked list\linked_list.h
+
+1668709917 source:m:\data structure\lec 1 - linked list - copy\main.c
+	<stdio.h>
+	<stdlib.h>
+	"linked_list.h"
+
+1668710049 m:\data structure\lec 1 - linked list - copy\linked_list.h
+

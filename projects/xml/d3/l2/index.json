@@ -1,0 +1,57 @@
+{
+    "library": {
+      "libern": "Muha",
+      "book": [
+        {
+          "author": "momo",
+          "preface": "how to think",
+          "part": [
+            {
+              "chapter": {
+                "summary": "how to be opo",
+                "content": {
+                  "p": "hello world!"
+                }
+              }
+            },
+            {
+              "chapter": {
+                "summary": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nobis aperiam rerum hic iure vel saepe accusantium fuga aspernatur, numquam ad dolor optio? Cum, ut?",
+                "content": {
+                  "p": [
+                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, repudiandae ex! Voluptates culpa, voluptatum aspernatur, sunt reiciendis praesentium quas architecto eligendi quae fugit minus saepe.",
+                    "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat impedit commodi quas. Ut ducimus ea harum veritatis. Eius porro ipsa quibusdam enim. Saepe, optio hic."
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "author": "Man1",
+          "preface": "Welcome to book1",
+          "part": [
+            {
+              "chapter": {
+                "summary": "chap1",
+                "content": {
+                  "p": "hi"
+                }
+              }
+            },
+            {
+              "chapter": {
+                "summary": "chap1 about iti",
+                "content": {
+                  "p": [
+                    "hi",
+                    "hi"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }

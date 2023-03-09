@@ -1,0 +1,368 @@
+:root {
+  --primary-dark-bg: #0b0c10;
+  --primary-dark-color: #c5c6c7;
+  --primary-dark-heading-color: #66fcf1;
+  --primary-dark-border-color: #1e7e79;
+  --primary-dark-gradient-heading-color: linear-gradient(
+    128deg,
+    var(--primary-dark-border-color) 0%,
+    var(--primary-dark-color) 50%
+  );
+  direction: ltr;
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a:link {
+  color: #2077d3;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: #2077d3;
+}
+
+/* mouse over link */
+a:hover {
+  color: #418cdd;
+}
+
+a.white:link {
+  color: red;
+  text-decoration: none;
+}
+
+
+.mask {
+  -webkit-mask-image: url(../../assets/images/logo-mask.png);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 70%;
+  mask-image: url(../../assets/images/logo-mask.png);
+  mask-repeat: no-repeat;    
+  mask-size: 70%;
+}
+
+/* start of header */
+header {
+  position: relative;
+  background-image: url(../../assets/images/header.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 150%;
+  width: 100%;
+  height: 400px;
+  animation: header-bg-movement 1s ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes header-bg-movement {
+  from {
+    background-position: center;
+  }
+  to {
+    background-position: left;
+  }
+}
+
+header .bg-filter {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  filter: blur(2px);
+}
+/* navbar  */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.navbar.nav-dark-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-dark-bg);
+  transition: 1s;
+}
+
+.navbar a.logo {
+  background: #0b0c10;
+  color: var(--primary-dark-color);
+  background-image: url(../../assets/images/logo.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.navbar .nav-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 95%;
+}
+
+.navbar .nav-list .nav-list-item {
+  padding: 0 5px;
+  margin: 0 10px;
+}
+
+.navbar .nav-list .nav-list-item a {
+  display: inline-block;
+  height: 100%;
+  padding-top: 18px;
+  animation: mymove 2s ease-in;
+}
+/* border when hover on nav list item */
+.nav-list-item:after {
+  display: block;
+  content: "";
+  border-bottom: solid 3px #019fb6;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+.nav-list-item:hover:after,
+.nav-list-item.active:after {
+  transform: scaleX(1);
+}
+.nav-list-item.fromRight:after {
+  transform-origin: 100% 50%;
+}
+.nav-list-item.fromLeft:after {
+  transform-origin: 0% 50%;
+}
+
+/* end of navbar */
+
+header h1,
+header h2 {
+  z-index: 199;
+  margin-top: 10px;
+  background: var(--primary-dark-gradient-heading-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  letter-spacing: 0.15em;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  animation: nameTyper 3.5s steps(30, end) forwards, blink-caret 0.5s step-end infinite;
+}
+
+header h2 {
+  font-size: 1.5rem;
+  width: 0;
+  animation: jobTyper 3.5s steps(40, end) 3.5s forwards, blink-caret 0.5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes nameTyper {
+  from {
+    width: 0;
+  }
+  to {
+    width: 27rem;
+  }
+}
+
+@keyframes jobTyper {
+  from {
+    width: 0;
+  }
+  to {
+    width: 23rem;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-right: 0.15em solid orange;
+    border-color: transparent;
+  }
+  50% {
+    border-right: 0.15em solid orange;
+    border-color: orange;
+  }
+}
+
+header div p {
+  color: var(--primary-dark-color);
+}
+
+.box {
+  position: relative;
+  margin: 0 auto;
+  height: 300px;
+  width: 300px;
+  background-color: var(--primary-dark-bg);
+}
+.box:before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #29e7cd 0%, #fffbfc 100%);
+  filter: blur(20px);
+  opacity: var(0.7);
+  transition: opacity 3s;
+  height: 200px;
+  width: 200px;
+  border-radius: inherit;
+}
+
+/* 
+* Prevents issues when the parent creates a 
+* stacking context. (For example, using the transform
+* property )
+*/
+.box::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  border-radius: inherit;
+}
+/* end of header */
+
+/* main */
+
+main {
+  padding: 20px;
+  background-color: var(--primary-dark-bg);
+  color: var(--primary-dark-color);
+}
+
+main h2 {
+  width: 40%;
+  font-size: 4rem;
+  text-align: center;
+  margin: 0 auto;
+  color: var(--primary-dark-color);
+}
+
+main h2 span {
+  color: var(--primary-dark-border-color);
+}
+
+main .container {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+main .container .start-div {
+}
+main .container .end-div {
+}
+main .container .end-div img {
+  display: block;
+  max-width: 20rem;
+  height: 30rem;
+  max-height: 30rem;
+}
+
+/* end of main */
+
+/* portfolio */
+
+.portfolio {
+  padding: 7px;
+  display: flex;
+  flex-grow: 2;
+  gap : 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  background-image: url(../../assets/images/header.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.portfolio .card {
+  width: 20rem;
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  border: 2px solid var(--primary-dark-border-color);
+  margin-top: 25px;
+  box-shadow: 13px 15px 6px 2px #0b0c1015;
+  background-color: #fff;
+}
+
+.portfolio .card .head {
+  width: 100%;
+}
+
+.portfolio .card .head img {
+  height: 150px;
+  width: 100%;
+}
+
+.portfolio .card .body {
+  width: 100%;
+  padding: 20px;
+}
+
+.portfolio .card .footer {
+  width: 100%;
+  text-align: start;
+  position: relative;
+  padding: 24px;
+}
+
+.portfolio .card .footer a {
+  padding: 2px;
+}
+
+.portfolio .card .footer a::before {
+  content: "";
+  width: 0;
+  height: 70%;
+  top: 10px;
+  left: 20px;
+  position: absolute;
+  transition: width 1s;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.portfolio .card .footer a:hover::after {
+  content: " >>";
+}
+
+.portfolio .card .footer a:hover::before {
+  width: 6rem;
+}
+
+
+/* end of portfolio */

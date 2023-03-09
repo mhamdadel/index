@@ -1,0 +1,37 @@
+.image-det{
+    margin-top: 25vh;
+    width: 80vw;
+    background-color: white;
+    padding: 25px;
+    height: 75vh;
+}
+
+.image-det .part{
+    display: inline-block;
+    float: left;
+    width: 42%;
+    height: 96%;
+    text-align: left;
+    padding: 2%;
+    font-size: 2rem;
+}
+
+.image-det .text-part{
+    width: 54%;
+}
+
+.image-det .part img{
+    width: 100%;
+    height: auto;
+}
+
+
+@media screen and (max-width: 600px) {
+    .image-det .part {
+        display: block;
+        clear: both;
+        width: 100%;
+        height: auto;
+        font-size: 1rem;
+    }
+}

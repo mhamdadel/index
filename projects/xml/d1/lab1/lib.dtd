@@ -1,0 +1,25 @@
+<!ELEMENT library (location,description,books)>
+<!ATTLIST library id CDATA #REQUIRED>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT books (book*)>
+<!ELEMENT book (isbn, author, preface, parts)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ATTLIST book title CDATA #REQUIRED>
+<!ELEMENT isbn #IMPLIED>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT preface #IMPLIED>
+<!ELEMENT parts (part*)>
+<!ELEMENT part (chapters)>
+<!ATTLIST part title CDATA #REQUIRED>
+<!ATTLIST part id CDATA #REQUIRED>
+<!ELEMENT chapters (chapter*)>
+<!ELEMENT chapter (summary, sections)>
+<!ATTLIST chapter id CDATA #REQUIRED>
+<!ATTLIST chapter title CDATA #REQUIRED>
+<!ELEMENT summary (#PCDATA)>
+<!ELEMENT sections (section*)>
+<!ELEMENT section (pharagraph*)>
+<!ATTLIST section id CDATA #REQUIRED>
+<!ELEMENT pharagraph (#PCDATA)>
+<!ATTLIST pharagraph id CDATA #REQUIRED>

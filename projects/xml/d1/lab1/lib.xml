@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE library SYSTEM "lib.dtd">
+
+<library id="1">
+    <location>
+        Haram-Giza ,Egypt
+    </location>
+
+    <description>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Quas neque saepe cum quo aliquid provident ullam! Animi 
+        distinctio omnis doloremque eligendi id perferendis in iusto!
+    </description>
+
+    <books>
+        <book id="1" title="How to use your brain">
+            <isbn></isbn>
+            <author>Muhammed Adel</author>
+            <preface></preface>
+            <parts>
+                <part id="1" title="be smart be creative">
+                    <chapters>
+                        <chapter id="1" title="how to be smart">
+                            <summary>Lorem ipsum dolor sit amet.</summary>
+                            <sections>
+                                <section id="1">
+                                    <pharagraph id="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis!</pharagraph>
+                                </section>
+                                <section id="2">
+                                    <pharagraph id="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis!</pharagraph>
+                                </section>
+                            </sections>
+                        </chapter>
+                        <chapter id="1" title="how to be smart">
+                            <summary>Lorem ipsum dolor sit amet.</summary>
+                            <sections>
+                                <section id="1">
+                                    <pharagraph id="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis!</pharagraph>
+                                </section>
+                            </sections>
+                        </chapter>
+                    </chapters>
+                </part>
+            </parts>
+        </book>
+        <book id="1" title="How to use your brain">
+            <isbn></isbn>
+            <author>Muhammed Adel</author>
+            <preface></preface>
+            <parts>
+                <part id="1" title="be smart be creative">
+                    <chapters>
+                        <chapter id="1" title="how to be smart">
+                            <summary>Lorem ipsum dolor sit amet.</summary>
+                            <sections>
+                                <section id="1">
+                                    <pharagraph id="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis!</pharagraph>
+                                </section>
+                            </sections>
+                        </chapter>
+                    </chapters>
+                </part>
+            </parts>
+        </book>
+    </books>
+</library>

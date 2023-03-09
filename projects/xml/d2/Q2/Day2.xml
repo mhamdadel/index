@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+<library xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="Day2.xsd"
+         location="ain_shams" description="it's a lib">
+    <libern>Itians</libern>
+    <book isbn="_book1" book_title="BOOK1">
+        <author>momo</author>
+        <preface>how to think</preface>
+        <part part_title="part">
+            <chapter chap_title="chap1">
+                <summary>how to be opetmistc</summary>
+                <content>
+                    <p> hello world! </p>
+                </content>
+            </chapter>
+        </part>
+        <part part_title="part">
+            <chapter chap_title="chap1">
+                <summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nobis aperiam rerum hic iure vel saepe accusantium fuga aspernatur, numquam ad dolor optio? Cum, ut?</summary>
+                <content>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, repudiandae ex! Voluptates culpa, voluptatum aspernatur, sunt reiciendis praesentium quas architecto eligendi quae fugit minus saepe.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat impedit commodi quas. Ut ducimus ea harum veritatis. Eius porro ipsa quibusdam enim. Saepe, optio hic.</p>
+                </content>
+            </chapter>
+        </part>
+    </book>
+    <book isbn="_book2" book_title="BOOK2">
+        <author>Man1</author>
+        <preface>Welcome to book1</preface>
+        <part part_title="part">
+            <chapter chap_title="chap1">
+                <summary>chap1 about iti</summary>
+                <content>
+                    <p>hello1</p>
+                </content>
+            </chapter>
+        </part>
+        <part part_title="part">
+            <chapter chap_title="chap1">
+                <summary>chap1 about iti</summary>
+                <content>
+                    <p>hello1</p>
+                    <p>hello1</p>
+                </content>
+            </chapter>
+        </part>
+    </book>
+</library>
+

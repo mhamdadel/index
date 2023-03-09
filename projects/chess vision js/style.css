@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#chessTable {
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(8,75px);
+    grid-template-rows: repeat(8,75px);
+}
+#chessTable * {
+    cursor: pointer;
+}
+
+#start {
+    background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

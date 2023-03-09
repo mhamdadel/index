@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(
+                to right top,
+                #051937,
+                #004d7a,
+                #008793,
+                #00bf72,
+                #a8eb12
+            );
+        }
+        .todo-element {
+            padding: 25px;
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 40px;
+            margin-top: 30px;
+        }
+        .todo-element h2 {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .input-control {
+            position: relative;
+            height: 80px;
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        .input-control input[type="search"] {
+            display: inline-block;
+            float: left;
+            width: 100%;
+            left: 0;
+            height: 40px;
+            padding: 4px;
+        }
+        .input-control input[type="text"] {
+            display: inline-block;
+            float: left;
+            width: 70%;
+            left: 0;
+            height: 40px;
+            padding: 4px;
+        }
+        .input-control button {
+            display: inline-block;
+            right: 0;
+            height: 40px;
+            width: 30%;
+            padding: 4px;
+            background-color: #061f46;
+            color: white;
+        }
+        .drop-list {
+            width: 80%;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid black;
+            min-height: 40px;
+        }
+        .todo-item {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+            border: 1px solid;
+            border-radius: 3px;
+            margin: 5px auto;
+            display: flex;
+            justify-content: space-between;
+            background-image: linear-gradient(
+                to right top,
+                #244f97,
+                #3a9ad1,
+                #b1c3c5,
+                #00bf72,
+                #a8eb12
+            );
+        }
+        .todo-item span {
+            padding: 0 10px;
+        }
+        .finished-list p.todo-item {
+            filter: grayscale(1);
+        }
+        .finished-list > .todo-item > span:first-child {
+            text-decoration: line-through;
+        }
+    </style>
+
+    <body>
+        <div class="todo-element">
+            <div class="input-control">
+                <input
+                    id="search"
+                    type="search"
+                    onkeyup="search(this)"
+                    width="100%"
+                    placeholder="search"
+                />
+                <input
+                    id="newTodo"
+                    type="text"
+                    width="70%"
+                    placeholder="add todo"
+                />
+                <button id="addTodoBtn" onclick="addTodo()">add todo</button>
+            </div>
+            <h2>todo list</h2>
+            <div
+                id="todo-list"
+                class="drop-list"
+                ondragover="allowDrop(event)"
+                ondrop="drop(event)"
+            ></div>
+            <h2>finished list</h2>
+            <div
+                id="finished-list"
+                class="drop-list finished-list"
+                ondragover="allowDrop(event)"
+                ondrop="drop(event)"
+            ></div>
+        </div>
+
+        <script>
+            const todoList = document.getElementById("todo-list");
+            const finishedList = document.getElementById("finished-list");
+            let selectedTodoList = undefined;
+            if (localStorage.getItem("todo-items-count") === undefined) {
+                localStorage.setItem("todo-items-count", 1);
+            }
+            let countOfItems = localStorage.getItem("todo-items-count");
+            //       localStorage['todo-items'] = (`[
+            // {"parent":0,"finished":0,"id":"d1","text":"Item 1"},
+            // {"parent":0,"finished":0,"id":"d2","text":"Item 2"},
+            // {"parent":0,"finished":0,"id":"d3","text":"Item 3"},
+            // {"parent":0,"finished":0,"id":"d4","text":"Item 4"},
+            // {"parent":0,"finished":0,"id":"d5","text":"Item 5"}
+            // ]`);
+
+            JSON.parse(localStorage["todo-items"]).forEach((el) => {
+                const todoList = [...document.querySelectorAll("#todo-list")][
+                    el["parent"]
+                ];
+                const finishedList = [
+                    ...document.querySelectorAll("#finished-list"),
+                ][el["parent"]];
+                const newChiled = `
+            <p
+            class="todo-item"
+            ondrop="drop(event)"
+            ondragstart="dragStart(event)"
+            draggable="true"
+            ondragenter="dragEnter(this)"
+            ondragleave="dragLeave(this)"
+            id="${el.id}"
+          >
+            <span>${el.text}</span>
+            <span>
+              <span onclick="removeGrandParent(this)">X</span>
+              <input type="checkbox" onclick="swap(this)" ${
+                  el["finished"] === 0 ? "" : "checked"
+              }/>
+            </span>
+          </p>
+            `;
+                if (el["finished"] === 0) {
+                    todoList.innerHTML += newChiled;
+                } else if (el["finished"] === 1) {
+                    finishedList.innerHTML += newChiled;
+                }
+            });
+
+            function isDescendant(parent, child) {
+                var node = child.parentNode;
+                while (node != null) {
+                    if (node == parent) {
+                        return true;
+                    }
+                    node = node.parentNode;
+                }
+                return false;
+            }
+            function insertAfter(referenceNode, newNode) {
+                referenceNode.parentNode.insertBefore(
+                    newNode,
+                    referenceNode.nextSibling
+                );
+            }
+
+            function addTodo() {
+                const todoText = document.getElementById("newTodo").value;
+                if (todoText != "") {
+                    if (selectedTodoList === undefined) {
+                        const todos =
+                            document.querySelectorAll('[id^="todo-list"]');
+                        const newChiled = `
+            <p
+            class="todo-item"
+            ondrop="drop(event)"
+            ondragstart="dragStart(event)"
+            draggable="true"
+            ondragenter="dragEnter(this)"
+            ondragleave="dragLeave(this)"
+            id="d${countOfItems}"
+          >
+            <span>${todoText}</span>
+            <span>
+              <span onclick="removeGrandParent(this)">X</span>
+              <input type="checkbox" onclick="swap(this)" />
+            </span>
+          </p>
+            `;
+                        ++countOfItems;
+                        localStorage.setItem("todo-items-count", countOfItems);
+                        [...todos].forEach((el, index) => {
+                            el.innerHTML += newChiled;
+                            if (localStorage.getItem("todo-items") !== null) {
+                                let newArryOfItem = JSON.parse(
+                                    localStorage.getItem("todo-items")
+                                );
+                                newArryOfItem.push({
+                                    parent: index,
+                                    finished: 0,
+                                    id: "d" + countOfItems,
+                                    text: todoText,
+                                });
+                                localStorage.setItem(
+                                    "todo-items",
+                                    JSON.stringify(newArryOfItem)
+                                );
+                            } else {
+                                const newObj = {
+                                    parent: index,
+                                    finished: 0,
+                                    id: "d" + countOfItems,
+                                    text: todoText,
+                                };
+                                localStorage.setItem(
+                                    "todo-items",
+                                    JSON.stringify([newObj])
+                                );
+                            }
+                        });
+                    } else {
+                    }
+                } else {
+                    alert("todo dosn't exist");
+                }
+            }
+
+            let countOfPrevMode = 0;
+            function countPrevNode(node) {
+                if (node?.previousElementSibling !== undefined) {
+                    ++countOfPrevMode;
+                    countPrevNode(node.previousElementSibling);
+                }
+                return countOfPrevMode - 1;
+            }
+
+            function getIndexOfTodoItemById(id) {
+                let allItems = JSON.parse(localStorage["todo-items"]);
+                let myIndexOfObj = null;
+                allItems.forEach((el, index) => {
+                    if (el.id == id) {
+                        myIndexOfObj = index;
+                    }
+                });
+                return myIndexOfObj;
+            }
+
+            function dragEnter(t) {
+                t.style.background =
+                    "linear-gradient(to bottom,  #9c9e9f 0%,#9c9e9f 50%,#33ccff 50%,#33ccff 100%)";
+            }
+
+            function dragLeave(t) {
+                t.style.background = null;
+            }
+
+            function insertBefore(referenceNode, newNode) {
+                referenceNode.parentNode.insertBefore(newNode, referenceNode);
+            }
+
+            function dragStart(event) {
+                event.dataTransfer.setData("Text", event.target.id);
+            }
+
+            function allowDrop(event) {
+                event.preventDefault();
+            }
+
+            function drop(event) {
+                event.preventDefault();
+                const data = event.dataTransfer.getData("Text");
+                if (
+                    event.target.id.startsWith("finished-list") ||
+                    event.target.id.startsWith("todo-list")
+                ) {
+                    swapDrag(document.getElementById(data));
+                    event.target.appendChild(document.getElementById(data));
+                } else if (
+                    document
+                        .getElementById(event.target.id)
+                        .classList.contains("todo-item")
+                ) {
+                    const items = document.querySelectorAll(
+                        ".drop-list .todo-item"
+                    );
+                    [...items].forEach(function (el) {
+                        const data = event.dataTransfer.getData("Text");
+                        if (
+                            event.clientY >= el.offsetTop &&
+                            event.clientY <= el.offsetTop + el.offsetHeight / 2
+                        ) {
+                            document.getElementById(data).style.background =
+                                null;
+                            event.target.style.background = null;
+                            insertBefore(
+                                event.target,
+                                document.getElementById(data)
+                            );
+                            let todoItemsInStorage = JSON.parse(
+                                localStorage["todo-items"]
+                            );
+                            let nodeOne =
+                                todoItemsInStorage[
+                                    getIndexOfTodoItemById(data)
+                                ];
+                            let nodeTwo =
+                                todoItemsInStorage[
+                                    getIndexOfTodoItemById(el.id)
+                                ];
+                            todoItemsInStorage[getIndexOfTodoItemById(data)] =
+                                nodeTwo;
+                            todoItemsInStorage[getIndexOfTodoItemById(el.id)] =
+                                nodeOne;
+                            localStorage.setItem(
+                                "todo-items",
+                                JSON.stringify(todoItemsInStorage)
+                            );
+                        } else if (
+                            event.clientY >= el.offsetTop &&
+                            event.clientY <= el.offsetTop + el.offsetHeight
+                        ) {
+                            document.getElementById(data).style.background =
+                                null;
+                            event.target.style.background = null;
+                            insertAfter(
+                                event.target,
+                                document.getElementById(data)
+                            );
+                            let todoItemsInStorage = JSON.parse(
+                                localStorage["todo-items"]
+                            );
+                            let nodeOne =
+                                todoItemsInStorage[
+                                    getIndexOfTodoItemById(data)
+                                ];
+                            let nodeTwo =
+                                todoItemsInStorage[
+                                    getIndexOfTodoItemById(el.id)
+                                ];
+                            todoItemsInStorage[getIndexOfTodoItemById(data)] =
+                                nodeTwo;
+                            if (el.parentNode.id.startsWith("finished-list")) {
+                                todoItemsInStorage[
+                                    getIndexOfTodoItemById(data)
+                                ]["finished"] = 1;
+                            } else {
+                                todoItemsInStorage[
+                                    getIndexOfTodoItemById(data)
+                                ]["finished"] = 0;
+                            }
+                            todoItemsInStorage[getIndexOfTodoItemById(el.id)] =
+                                nodeOne;
+                            localStorage.setItem(
+                                "todo-items",
+                                JSON.stringify(todoItemsInStorage)
+                            );
+                        }
+                    });
+                }
+                // countPrevNode(document.getElementById(data));
+                // localStorage['todo-items'][getIndexOfTodoItemById()];
+            }
+
+            /* todo list */
+            function removeGrandParent(t) {
+                const element = t.parentNode.parentNode;
+                let todoItemsInStorage = JSON.parse(localStorage["todo-items"]);
+                todoItemsInStorage.splice(
+                    getIndexOfTodoItemById(element.id),
+                    1
+                );
+                localStorage.setItem(
+                    "todo-items",
+                    JSON.stringify(todoItemsInStorage)
+                );
+                t.parentNode.parentNode.remove();
+            }
+
+            function swap(t) {
+                let element = t.parentNode.parentNode;
+                let parent = element.parentNode;
+                if (t.checked && parent.id.startsWith("todo-list")) {
+                    finishedList.appendChild(element);
+                } else if (
+                    !t.checked &&
+                    parent.id.startsWith("finished-list")
+                ) {
+                    todoList.appendChild(element);
+                }
+
+                let myElmentsInStore = JSON.parse(
+                    localStorage.getItem("todo-items")
+                );
+                let myElmentInStore =
+                    myElmentsInStore[getIndexOfTodoItemById(element.id)];
+                if (myElmentInStore["finished"] == 0) {
+                    myElmentInStore["finished"] = 1;
+                } else if (myElmentInStore["finished"] == 1) {
+                    myElmentInStore["finished"] = 0;
+                }
+                localStorage.setItem(
+                    "todo-items",
+                    JSON.stringify(myElmentsInStore)
+                );
+            }
+
+            function swapDrag(element) {
+                let parent = element.parentNode;
+                let checkBox = element.children[1].children[1];
+                checkBox.toggleAttribute("checked");
+                if (checkBox.checked && parent.id.startsWith("todo-list")) {
+                    finishedList.appendChild(element);
+                } else if (
+                    !checkBox.checked &&
+                    parent.id.startsWith("finished-list")
+                ) {
+                    todoList.appendChild(element);
+                }
+
+                let myElmentsInStore = JSON.parse(
+                    localStorage.getItem("todo-items")
+                );
+                let myElmentInStore =
+                    myElmentsInStore[getIndexOfTodoItemById(element.id)];
+                if (myElmentInStore["finished"] == 0) {
+                    myElmentInStore["finished"] = 1;
+                } else if (myElmentInStore["finished"] == 1) {
+                    myElmentInStore["finished"] = 0;
+                }
+                localStorage.setItem(
+                    "todo-items",
+                    JSON.stringify(myElmentsInStore)
+                );
+            }
+
+            function search(search) {
+                const items = document.querySelectorAll(
+                    ".drop-list .todo-item"
+                );
+                search.addEventListener("keyup", function (e) {
+                    for (let i = 0; i < items.length; i++) {
+                        const textOfItem = items[i].querySelector("span");
+                        let tableRows = items[i].children[0];
+                        if (
+                            textOfItem.textContent
+                                .toLowerCase()
+                                .indexOf(search.value.toLowerCase()) > -1 &&
+                            search.value != " "
+                        ) {
+                            tableRows.parentNode.style.display = "flex";
+                        } else {
+                            tableRows.parentNode.style.display = "none";
+                        }
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

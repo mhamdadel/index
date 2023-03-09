@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XmlSchema.xsd to edit this template
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <xs:element name="BookStore">
+        <xs:complexType> 
+            <xs:sequence> <!--(xs:all) or (xs:choice)-->
+                <xs:element name="book" type="Book" maxOccurs="unbounded"/>
+            </xs:sequence>      
+        </xs:complexType>
+    </xs:element> 
+    
+    <xs:complexType name="Book"> 
+        <xs:sequence> <!--(xs:all) or (xs:choice)-->
+            <xs:element name="Title" type="xs:string"/>  
+            <xs:element name="Author" type="xs:string"/>  
+            <xs:element name="Date" type="xs:string"/>
+            <xs:element name="ISBN" type="xs:string"/>
+            <xs:element name="Publisher" type="xs:string"/>
+        </xs:sequence>        
+    </xs:complexType>
+</xs:schema>

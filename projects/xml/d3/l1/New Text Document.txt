@@ -1,0 +1,14 @@
+select all the CD's titles with price more than 10$
+/catalog/cd[price > 10]/title
+
+select all the CDs that came before 1990
+/catalog/cd[year < 1990]
+
+select the titles and prices of all the Cds from "UK"
+/catalog/cd[country = "UK"]/title | /catalog/cd[country = "UK"]/price
+
+select the artists names inthe CDs that came before "Dolly Parton" 's CD
+/catalog/cd[title = "Dolly Parton"]/Preceding-Sibling::cd/artist
+
+select the titles of all the CDs after the "private Dancer" CD
+/catalog/cd[title = "private Dancer"]/Following-Sibling::cd/title

@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1667891361 source:m:\c\lec 6\text editor\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<time.h>
+	"mylibrary.h"
+
+1667822806 source:m:\c\lec 6\text editor\mylibrary.c
+	"mylibrary.h"
+
+1667822806 m:\c\lec 6\text editor\mylibrary.h
+	<windows.h>
+
+1667930874 source:m:\c\lec 8\text editor\mylibrary.c
+	"mylibrary.h"
+
+1667930891 m:\c\lec 8\text editor\mylibrary.h
+	<windows.h>
+
+1667932275 source:m:\c\lec 8\text editor\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<time.h>
+	"mylibrary.h"
+
+1668046902 source:m:\c\lec 8\d8- text editor\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<time.h>
+	"mylibrary.h"
+
+1667930891 m:\c\lec 8\d8- text editor\mylibrary.h
+	<windows.h>
+
+1667930874 source:m:\c\lec 8\d8- text editor\mylibrary.c
+	"mylibrary.h"
+
+1667930874 source:m:\c\d8- multi line\mylibrary.c
+	"mylibrary.h"
+
+1667930891 m:\c\d8- multi line\mylibrary.h
+	<windows.h>
+
+1668053277 source:m:\c\d8- multi line\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<time.h>
+	"mylibrary.h"
+
+1667930874 source:c:\xampp\htdocs\portfolio\projects\c\all labs\d8- multi line\mylibrary.c
+	"mylibrary.h"
+
+1667930891 c:\xampp\htdocs\portfolio\projects\c\all labs\d8- multi line\mylibrary.h
+	<windows.h>
+
+1668098815 source:c:\xampp\htdocs\portfolio\projects\c\all labs\d8- multi line\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<time.h>
+	"mylibrary.h"
+

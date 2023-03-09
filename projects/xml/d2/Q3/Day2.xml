@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+<BookStore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="Day2.xsd">
+    <book>
+        <Title>BOOK1</Title>
+        <Author>Man1</Author>
+        <Date>22-11-2023</Date>
+        <ISBN>Welcome to book1</ISBN>
+        <Publisher>Muhannad Ibrahim</Publisher>
+    </book>
+    <book>
+        <Title>BOOK2</Title>
+        <Author>Man2</Author>
+        <Date>22-11-2023</Date>
+        <ISBN>Welcome to book2</ISBN>
+        <Publisher>Muhannad Ibrahim2</Publisher>
+    </book>
+</BookStore>
+

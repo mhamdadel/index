@@ -1,0 +1,492 @@
+:root {
+    --main-color: #c1272d;
+}
+
+::-webkit-scrollbar {
+    width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--main-color);
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    text-align: center;
+    text-align: -webkit-center;
+    cursor: url("../images/cur.png"), auto;
+    background-image: url('../images/bg.JPG');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+a {
+    cursor: url("../images/curpointer.png"), auto;
+}
+
+body .blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: blur(5px);
+}
+
+body main {
+    width: calc(100% - 45px);
+    min-height: 100vh;
+    float: right;
+    display: block;
+}
+
+
+/* navbar */
+nav {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 135px;
+    background-color: black;
+    color: white;
+    z-index: 1;
+    clip-path: polygon(0% 0%, 0% 82.5%, 1.69492% 84.3293%, 3.38983% 86.1385%, 5.08475% 87.9078%, 6.77966% 89.6179%, 8.47458% 91.25%, 10.1695% 92.7862%, 11.8644% 94.2098%, 13.5593% 95.505%, 15.2542% 96.6578%, 16.9492% 97.6555%, 18.6441% 98.487%, 20.339% 99.1435%, 22.0339% 99.6176%, 23.7288% 99.9041%, 25.4237% 100%, 27.1186% 99.9041%, 28.8136% 99.6176%, 30.5085% 99.1435%, 32.2034% 98.487%, 33.8983% 97.6555%, 35.5932% 96.6578%, 37.2881% 95.505%, 38.9831% 94.2098%, 40.678% 92.7862%, 42.3729% 91.25%, 44.0678% 89.6179%, 45.7627% 87.9078%, 47.4576% 86.1385%, 49.1525% 84.3293%, 50.8475% 82.5%, 52.5424% 80.6708%, 54.2373% 78.8616%, 55.9322% 77.0922%, 57.6271% 75.3821%, 59.322% 73.75%, 61.017% 72.2138%, 62.7119% 70.7902%, 64.4068% 69.495%, 66.1017% 68.3422%, 67.7966% 67.3446%, 69.4915% 66.513%, 71.1864% 65.8565%, 72.8814% 65.3824%, 74.5763% 65.0959%, 76.2712% 65%, 77.9661% 65.0959%, 79.661% 65.3824%, 81.3559% 65.8565%, 83.0509% 66.513%, 84.7458% 67.3446%, 86.4407% 68.3422%, 88.1356% 69.495%, 89.8305% 70.7902%, 91.5254% 72.2138%, 93.2203% 73.75%, 94.9153% 75.3821%, 96.6102% 77.0922%, 98.3051% 78.8616%, 100% 80.6708%, 100% 0%);
+}
+
+main nav header {
+    display: inline-block;
+    width: auto;
+    height: 16px;
+    text-align: center;
+    margin: 2vh auto;
+    margin-top: 10px;
+}
+
+main nav header a:visited,
+main nav header a:link {
+    text-decoration: none;
+    color: white;
+}
+
+main nav header a {
+    color: white;
+    display: inline-block;
+    margin: 0 3vw;
+}
+
+main nav header a:hover {
+    color: var(--main-color);
+}
+
+nav a {
+    float: left;
+}
+
+main nav div {
+    clear: both;
+}
+
+nav a #logo {
+    width: auto;
+    height: 60px;
+    margin-left: 20px;
+    margin-top: -15px;
+}
+
+nav ul {
+    display: inline-block;
+    float: right;
+    margin-left: auto;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    cursor: url("../images/curpointer.png"), auto;
+    padding: 0px 15px;
+}
+
+
+nav ul li a:visited,
+nav ul li a:link {
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a {
+    color: white;
+    display: inline-block;
+    height: 100%;
+    padding: 10px 2px;
+    width: 100%;
+}
+
+nav ul li a:hover,
+nav ul li a.current-page {
+    height: 100%;
+    border-bottom: solid 1px;
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+/* end of navbar */
+
+/* slider */
+.slider {
+    text-align: center;
+    height: auto;
+    margin-top: 150px;
+    top: 0;
+    position: sticky;
+    z-index: 999;
+}
+
+.slider .bouns {
+    background-color: black;
+    overflow: hidden;
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    font-family: arial;
+    color: transparent;
+    font-size: 65px;
+}
+
+.slider .bouns span {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    display: block;
+    background-image: url('../images/bg.JPG');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+.slider .imgs {
+    display: block;
+    width: 15vw;
+    height: 40vh;
+    margin: 0 auto;
+    background-color: white;
+    overflow: hidden;
+}
+
+.slider img {
+    width: auto;
+    display: inline-block;
+    height: 40vh;
+    width: 15vw;
+    left: 0;
+}
+
+/* cards */
+
+.cards {
+    border: 1px solid;
+    width: calc(100% - 45px);
+    padding: 20px;
+    border-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    text-align: -webkit-center;
+    margin-top: 5%;
+    background-color: white;
+    position: relative;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 25%;
+    display: inline-block;
+    margin: 15px;
+    background-color: white;
+}
+
+.cards .card a:visited,
+.cards .card a:link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 15px;
+    width 75%;
+}
+
+.cards .card a:hover {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.cards .card a:active {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.container {
+    text-align: center;
+    padding: 2px 16px;
+}
+
+/* end of cards */
+
+/* footer of footer */
+
+/* end of footer */
+
+
+/* footer */
+footer {
+    clear: both;
+    background-color: black;
+    position: block;
+    bottom: 0;
+    width: calc(100% - 45px);
+    display: inline-block;
+    margin-top: 5%;
+    float: right;
+}
+
+/* head of footer */
+
+footer a:visited,
+footer a:link {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+table.f-header {
+    border-collapse: collapse;
+    margin: 15px;
+}
+
+table.f-header td {
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+table.f-header td:not(:first-child) {
+    border-left: 1px solid #ddd;
+}
+
+/* footer of footer */
+
+footer div.f-body {
+    display: block;
+    height: 40px;
+    padding-top: 20px;
+    background-color: white;
+}
+
+/* end of footer */
+
+/* aside */
+
+aside {
+    height: calc(100%);
+    position: fixed;
+    text-align: left;
+    width: 45px;
+    padding: 10px;
+    background-color: black;
+}
+
+
+aside #logo {
+    width: 30px;
+    height: 30px;
+}
+
+aside:hover {
+    width: 18%;
+    transition: 0.6s ease;
+}
+
+aside ul li {
+    padding-top: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+aside ul li a:hover {
+    color: var(--main-color);
+}
+
+aside ul li a span {
+    display: none;
+}
+
+aside:hover ul li a span {
+    transition: 0.6s ease;
+    display: inline-block;
+}
+
+aside ul li a:visited,
+aside ul li a:link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+aside ul li a:hover {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+/* end of aside*/
+
+
+.t-users {
+    border-collapse: collapse;
+    font-size: 2vw;
+}
+
+.t-users thead tr th {
+    border: 1px solid;
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
+
+.t-users tbody tr td {
+    border: 1px solid;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.t-users tbody tr td i:hover {
+    color: var(--main-color);
+    cursor: url("../images/curpointer.png"), auto;
+}
+
+.t-users tbody tr:nth-child(odd) {
+    background-color: rgb(255, 255, 255);
+}
+
+.t-users tbody tr:nth-child(even) {
+    background-color: rgba(128, 128, 128, 0.829);
+}
+
+
+@media screen and (max-width: 325px) {
+    * {
+        display: none;
+    }
+
+    body::after {
+        content: "min height to view my site 325px";
+        display: block;
+        text-align: center;
+        margin-top: 40vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 90%;
+    }
+
+    .slider .bouns {
+        font-size: 1rem;
+    }
+
+    .slider img {
+        width: 50%;
+        height: auto;
+    }
+
+    .slider img:hover {
+        width: 90%;
+        height: auto;
+    }
+
+    .slider .imgs {
+        width: 40vw;
+    }
+
+    main nav {
+        height: 125px;
+        clip-path: none;
+    }
+
+    main nav #logo {
+        margin-top: 5px;
+    }
+
+    main nav header {
+        display: block;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    main nav header a {
+        margin: 0 auto;
+        padding: 5px 10vw 5px;
+    }
+
+    main nav header a span {
+        display: none;
+    }
+
+    main nav ul {
+        display: block;
+        width: 80%;
+    }
+
+    main nav ul li {
+        width: 25%;
+    }
+
+    table.f-header td {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    aside {
+        padding-top: 25px;
+    }
+
+    aside:hover {
+        width: 80vw;
+    }
+
+}
+
+
+@media screen and (max-width: 800px) {
+    .card {
+        width: 40%;
+    }
+    .slider .bouns {
+        font-size: 2.5rem;
+    }
+}

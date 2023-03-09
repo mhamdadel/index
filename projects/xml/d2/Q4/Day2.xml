@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+<BookStore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="Day2.xsd">
+    <book Category="fiction" InStock="True">
+        <Title>how to be creative</Title>
+        <Author>Man1</Author>
+    </book>
+    <book Category="sience" InStock="False">
+        <Title>how to be creative</Title>
+        <Author>momo</Author>
+    </book>
+</BookStore>
+

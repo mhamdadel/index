@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title> عبور النار </title>
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+	<canvas id="canvas" onmousemove="getMousePos(this,event)"
+		onmousedown="fires.push(new fire(player1.x, player1.y, nMX, nMY))" width="1240" height="820"></canvas>
+
+	<div id="div"></div>
+	<!--<marquee color="black"; direction="right" width="100%" height="20" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="10" scrollamount="5">
+            <a href="#">قناة محمد  عادل تقدم أهم مباراة بين أول لاعبيون من فريق أحتياط الناشئيين من أخر فرقة من الدوري غير المعروف و محدش منكم يركز في الكلام علي شان ما ازعلهوش</a>
+        </marquee>-->
+
+
+	<div id="out"></div>
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
+</body>
+
+</html>

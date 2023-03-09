@@ -1,0 +1,29 @@
+@use "sass:math"
+@use "__colors" as colors
+$layout-direction: ltr !default
+
+*
+	margin: 0
+	padding: 0
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+
+%clearfix:after
+	display: block
+	clear: both
+	content: ''
+
+.row
+	@extend %clearfix
+
+	& + &
+		margin-top: 3px
+
+.row [class^="col-"]
+	float: left
+	color: colors.$mimosa
+
+@for $i from 1 through 12
+	[class^="col-#{$i}"]
+		width: calc(100% / (12 / #{$i}))

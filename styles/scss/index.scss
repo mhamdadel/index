@@ -1,0 +1,435 @@
+$color_1: #2077d3;
+$color_2: #418cdd;
+$color_3: red;
+$color_4: var(--primary-dark-color);
+$color_5: var(--primary-dark-border-color);
+$background-color_1: rgba(0, 0, 0, 0.3);
+$background-color_2: var(--primary-dark-bg);
+$background-color_3: #fff;
+
+/* visited link */
+/* mouse over link */
+/* start of header */
+@keyframes header-bg-movement {
+    from {
+        background-position: center;
+    }
+    to {
+        background-position: left;
+    }
+}
+/* navbar  */
+/* border when hover on nav list item */
+/* end of navbar */
+/* The typing effect */
+@keyframes nameTyper {
+    from {
+        width: 0;
+    }
+    to {
+        width: 27rem;
+    }
+}
+
+@keyframes popUpText {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes jobTyper {
+    from {
+        width: 0;
+    }
+    to {
+        width: 23rem;
+    }
+}
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from,
+    to {
+        border-right: 0.15em solid orange;
+        border-color: transparent;
+    }
+    50% {
+        border-right: 0.15em solid orange;
+        border-color: orange;
+    }
+}
+/* 
+* Prevents issues when the parent creates a 
+* stacking context. (For example, using the transform
+* property )
+*/
+/* end of header */
+/* main */
+/* end of main */
+/* portfolio */
+/* end of portfolio */
+:root {
+    --primary-dark-bg: #0b0c10;
+    --primary-dark-color: #c5c6c7;
+    --primary-dark-heading-color: #66fcf1;
+    --primary-dark-border-color: #1e7e79;
+    --primary-dark-gradient-heading-color: linear-gradient(
+        128deg,
+        var(--primary-dark-border-color) 0%,
+        var(--primary-dark-color) 50%
+    );
+    direction: ltr;
+}
+
+::-webkit-scrollbar {
+    width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-dark-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark-border-color);
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.5s;
+    &::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    &::before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+}
+html {
+    scroll-behavior: smooth;
+}
+h2 {
+    animation: popUpText 1s ease-in;
+    animation-fill-mode: forwards;
+}
+a {
+    &:link {
+        color: $color_1;
+        text-decoration: none;
+    }
+    &:visited {
+        color: $color_1;
+    }
+    &:hover {
+        color: $color_2;
+    }
+}
+a.white {
+    &:link {
+        color: $color_3;
+        text-decoration: none;
+    }
+}
+.mask {
+    -webkit-mask-image: url(../../assets/images/logo-mask.png);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 70%;
+    mask-image: url(../../assets/images/logo-mask.png);
+    mask-repeat: no-repeat;
+    mask-size: 70%;
+}
+header {
+    position: relative;
+    background-image: url(../../assets/images/header.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 150%;
+    width: 100%;
+    height: 400px;
+    animation: header-bg-movement 1s ease-in;
+    animation-fill-mode: forwards;
+    .bg-filter {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $background-color_1;
+        filter: blur(2px);
+    }
+    h1 {
+        z-index: 199;
+        margin-top: 10px;
+        margin-left: 10%;
+        width: 80%;
+        background: var(--primary-dark-gradient-heading-color);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+        letter-spacing: 0.15em;
+        font-size: 2.8rem;
+        animation: nameTyper 3.5s steps(30, end) forwards,
+            blink-caret 0.5s step-end infinite;
+    }
+    h2 {
+        z-index: 199;
+        margin-top: 10px;
+        margin-left: 10%;
+        background: var(--primary-dark-gradient-heading-color);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+        letter-spacing: 0.15em;
+        font-size: 1.5rem;
+        width: 0;
+        animation: jobTyper 3.5s steps(40, end) 3.5s forwards,
+            blink-caret 0.5s step-end infinite;
+    }
+    div {
+        p {
+            color: $color_4;
+        }
+    }
+}
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    a.logo {
+        background: #0b0c10;
+        color: $color_4;
+        background-image: url(../../assets/images/logo.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .nav-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 95%;
+        .nav-list-item {
+            padding: 0 5px;
+            margin: 0 10px;
+            a {
+                display: inline-block;
+                height: 100%;
+                padding-top: 18px;
+                animation: mymove 2s ease-in;
+            }
+        }
+    }
+}
+.navbar.nav-dark-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $background-color_2;
+    transition: 1s;
+}
+.nav-list-item {
+    &:after {
+        display: block;
+        content: "";
+        border-bottom: solid 3px #019fb6;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+    }
+    &:hover {
+        &:after {
+            transform: scaleX(1);
+        }
+    }
+}
+.nav-list-item.active {
+    &:after {
+        transform: scaleX(1);
+    }
+}
+.nav-list-item.fromRight {
+    &:after {
+        transform-origin: 100% 50%;
+    }
+}
+.nav-list-item.fromLeft {
+    &:after {
+        transform-origin: 0% 50%;
+    }
+}
+.box {
+    position: relative;
+    margin: 0 auto;
+    height: 300px;
+    width: 300px;
+    background-color: $background-color_2;
+    &:before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(-45deg, #29e7cd 0%, #fffbfc 100%);
+        filter: blur(20px);
+        opacity: var(0.7);
+        transition: opacity 3s;
+        height: 200px;
+        width: 200px;
+        border-radius: inherit;
+    }
+    &::after {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: inherit;
+        border-radius: inherit;
+    }
+}
+main {
+    padding: 20px;
+    background: url(../../assets/images/bg1.svg);
+    color: $color_4;
+    h2 {
+        width: 40%;
+        font-size: 4rem;
+        text-align: center;
+        margin: 0 auto;
+        color: $color_4;
+        span {
+            color: $color_5;
+        }
+    }
+    .container {
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        font-size: 2rem;
+        .end-div {
+            img {
+                display: block;
+                max-width: 20rem;
+                height: 30rem;
+                max-height: 30rem;
+            }
+        }
+    }
+}
+.portfolio {
+    padding: 7px;
+    display: flex;
+    flex-grow: 2;
+    gap: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: url(../../assets/images/bg2.svg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    h2 {
+        display: block;
+        width: 100%;
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid $color_4;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .card {
+        width: 15rem;
+        display: inline-flex;
+        flex-direction: column;
+        text-align: center;
+        border: 2px solid var(--primary-dark-border-color);
+        margin-top: 25px;
+        box-shadow: 13px 15px 6px 2px #0b0c1015;
+        background-color: $background-color_3;
+        border-radius: 7px;
+        .head {
+            width: 100%;
+            position: relative;
+            img {
+                height: 150px;
+                width: 100%;
+            }
+            &:hover .card-hover {
+                height: 100%;
+                padding: 10px;
+                width: 100%;
+            }
+            .card-hover {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                background-color: var(--primary-dark-bg);
+                color: var(--primary-dark-color);
+                height: 0;
+                overflow: hidden;
+                text-align: center;
+                transition: height 1s;
+                padding: 0 10px;
+            }
+        }
+        .body {
+            width: 100%;
+            position: relative;
+        }
+        .footer {
+            width: 100%;
+            text-align: start;
+            position: relative;
+            padding: 10px;
+            text-align: center;
+            a {
+                padding: 2px;
+                &::before {
+                    content: "";
+                    width: 0;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    transition: width 1s;
+                    background-color: $background-color_1;
+                }
+                &:hover {
+                    &::before {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#skills {
+    padding: 50px 20px 20px;
+    background: $background-color_2;
+    color: $color_4;
+    text-align: center;
+}
+
+@import "_medias.scss";
