@@ -168,7 +168,7 @@ header h1 {
   white-space: nowrap;
   letter-spacing: 0.15em;
   font-size: 2.8rem;
-  animation: nameTyper 3.5s steps(30, end) forwards, blink-caret 0.5s step-end infinite;
+  animation: nameTyper 3.5s steps(30, end) alternate infinite, blink-caret 0.5s step-end infinite;
 }
 header h2 {
   z-index: 199;
@@ -181,7 +181,7 @@ header h2 {
   letter-spacing: 0.15em;
   font-size: 1.5rem;
   width: 0;
-  animation: jobTyper 3.5s steps(40, end) 3.5s forwards, blink-caret 0.5s step-end infinite;
+  animation: jobTyper 3.5s steps(40, end) 0s alternate infinite, blink-caret 0.5s step-end infinite;
 }
 header div p {
   color: var(--primary-dark-color);
@@ -292,7 +292,7 @@ header div p {
 
 main {
   padding: 20px;
-  background: url(../../assets/images/bg1.svg);
+  background: var(--primary-dark-bg);
   color: var(--primary-dark-color);
 }
 main h2 {
@@ -412,6 +412,17 @@ main .container .end-div img {
   background: var(--primary-dark-bg);
   color: var(--primary-dark-color);
   text-align: center;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(50%);
+  animation-duration: 1s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Extra small devices (phones, 600px and down) */
