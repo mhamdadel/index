@@ -431,7 +431,7 @@ main .container .end-div img {
     font-size: 10px;
   }
   .portfolio .card {
-    width: 90%;
+    width: 60%;
   }
   main .container {
     flex-wrap: wrap;
