@@ -426,9 +426,7 @@
             }
 
             let allCirProg = document.querySelectorAll("canvas.cir-prog");
-            for (const cirProg of allCirProg) {
-                drawCircleProgress(cirProg);
-            }
+            [...allCirProg].map(drawCircleProgress);
         </script>
     </body>
 </html>
