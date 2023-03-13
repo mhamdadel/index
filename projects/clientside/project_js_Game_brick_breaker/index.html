@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>break bricks || js project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <canvas id="myCanvas" width="1000" height="500"></canvas>
+      </div>
+      <div>
+        <div></div>
+        <div id="controls">
+          <input
+            id="sound"
+            type="checkbox"
+            class="check"
+            onclick="checkAll()"
+          />
+          <label for="sound" id="sound">sound</label>
+        </div>
+      </div>
+    </div>
+
+    <audio id="loseSound">
+      <source src="./RG8VALN-game-over.mp3" type="audio/mpeg" />
+    </audio>
+
+    <audio id="hitSound">
+      <source
+        src="./mixkit-glass-break-with-hammer-thud-759.wav"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <audio id="winSound">
+      <source
+        src="./mixkit-medieval-show-fanfare-announcement-226.wav"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <audio id="loseLive">
+      <source src="./mixkit-losing-piano-2024.wav" type="audio/mpeg" />
+    </audio>
+
+    <!-- <script src="./script.js"></script> -->
+  </body>
+  <script src="./JS/script.js"></script>
+  <script src="./JS/Draw.js"></script>
+  <script src="./JS/Ball.js"></script>
+  <script src="./JS/Paddle.js"></script>
+  <script src="./JS/Bricks.js"></script>
+  <script src="./JS/Levels.js"></script>
+  <script src="./JS/Bonus.js"></script>
+  <script src="./JS/Screen.js"></script>
+  <script src="./JS/Bullet.js"></script>
+  <script src="./JS/Gun.js"></script>
+  <script src="./JS/logic.js"></script>
+</html>

@@ -1,0 +1,19 @@
+body {
+    background-image:url("./imgs/1.jpg");
+    width: 100px;
+}
+
+#myCanvas {
+    margin-top: 100%;
+    margin-left: 220%;
+}
+#controls{
+    color: yellow;
+    font-size: 25px;
+    margin-bottom: 100%;
+    margin-left: 20%;
+}
+.check{
+    width: 30px;
+    height: 30px;
+  }
