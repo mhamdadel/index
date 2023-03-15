@@ -103,6 +103,8 @@ $background-color_3: #fff;
     margin: 0;
     box-sizing: border-box;
     transition: 0.5s;
+
+    cursor: url("../../assets/images/cursors/main.gif"), auto;
     &::after {
         padding: 0;
         margin: 0;
